@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd
+                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+">
+
+<!--    注解扫描-->
+    <context:component-scan base-package="hyl.hylnetwork"></context:component-scan>
+<!--    数据库连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name="url" value="jdbc:mysql:///user_db" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+    </bean>
+
+<!--    配置jdbctemplate 注入datasource-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+<!--        注入datasource-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+<!--    <bean id="user" class="hyl.hylnetwork.entity.User">-->
+<!--        <property name="list" >-->
+<!--            <list>-->
+<!--                <ref bean="student1"></ref>-->
+<!--                <ref bean="student2"></ref>-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+<!--    //创建对象名为student1的学生类-->
+<!--        <bean id="student1" class="hyl.hylnetwork.entity.Student">-->
+<!--            <property name="age" value="12"></property>-->
+<!--            <property name="name" value="james"></property>-->
+<!--            <property name="id" value="1"></property>-->
+<!--        </bean>-->
+
+<!--    <bean id="student2" class="hyl.hylnetwork.entity.Student">-->
+<!--        <property name="age" value="12"></property>-->
+<!--        <property name="name" value="jerry"></property>-->
+<!--        <property name="id" value="2"></property>-->
+<!--    </bean>-->
+</beans>

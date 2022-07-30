@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+<!--    把集合注入部分提取出来
+（1）在spring配置文件中引入名称空间util
+
+-->
+
+
+    <bean id="orders" class="hyl.hylnetwork.bean.Orders" init-method="initMethod" destroy-method="destroyMethod">
+        <property name="oname" value="手机"></property>
+    </bean>
+
+    <bean id="myBeanPost" class="hyl.hylnetwork.bean.MyBeanPost"></bean>
+</beans>
